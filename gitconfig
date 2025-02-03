@@ -1,0 +1,10 @@
+[user]
+	name = 
+	email = 
+
+[alias]
+	glog = log --all --pretty='format:%d %Cgreen%h%Creset %an - %s' --graph
+	uncommit = reset --soft HEAD^
+
+[pull]
+	ff = only

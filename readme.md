@@ -35,4 +35,18 @@ mv ~/.bashrc ~/dotfiles/bash_env
 ```
 that way whatever is in there will continue to be there.
 
+## Vim Stuff
 
+Install vim plug. 
+```bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+then
+```bash
+vimrc
+```
+then run 
+```
+:PlugInstall
+```

@@ -3,8 +3,36 @@
 	email = 
 
 [alias]
-	glog = log --all --pretty='format:%d %Cgreen%h%Creset %an - %s' --graph
-	uncommit = reset --soft HEAD^
+	glog = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative	uncommit = reset --soft HEAD^
 
 [pull]
-	ff = only
+	rebase = true
+
+[color]
+    ui = always
+    diff = always
+
+[color "diff"]
+  meta = 11
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
+

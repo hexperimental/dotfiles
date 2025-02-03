@@ -110,6 +110,14 @@ set background=dark
 "colorscheme solarized
 colorscheme molokai
 
+setlocal spell spelllang=en_us
+autocmd BufRead,BufNewFile *.md,*.txt setlocal spell  " enable spell check for certain files
+
+set enc=utf-8
+set fenc=utf-8
+set termencoding=utf-8
+set history=1000
+
 set ignorecase "Ignore case when searching
 set smartcase
 set incsearch "Make search act like search in modern browsers
@@ -292,6 +300,8 @@ call NERDTreeHighlightFile('.pem', 'black', 'red')
 " call NERDTreeHighlightFile('.css', 'green', 'black')
 " call NERDTreeHighlightFile('.json', 'darkred', 'black')
 call NERDTreeHighlightFile('.html', 'white', 'black')
+let g:netrw_banner = 0
+let g:netrw_liststyle=3
 
 let NERDTreeShowHidden=1
 let NERDTreeHijackNetrw=1

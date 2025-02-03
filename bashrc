@@ -9,6 +9,14 @@ export HISTFILESIZ=25000
 export HISTCONTROL=ignoredups 
 
 LS_COLORS='di=0;35:fi=0;37'
+shopt -s cdspell
+shopt -s nocaseglob
+# append to the history file, don't overwrite it
+shopt -s histappend
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
 # Set the terminal background and text color
 export TERM=xterm-256color
 
@@ -35,8 +43,9 @@ else
 fi
 
 
+
 # function to set terminal title  
-function set-title() {
+function tabtitle() {
   if [[ -z "$ORIG" ]]; then
     ORIG=$PS1
   fi

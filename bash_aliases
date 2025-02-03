@@ -36,3 +36,14 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+# Open with default application
+alias open='xdg-open'
+
+# Support cls
+alias cls='clear'
+
+# More informative commands
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -v'

@@ -66,6 +66,13 @@ parse_git_branch() {
 
 GIT_PS1_SHOWDIRTYSTATE=true
 
+# Check for uncommitted changes in the dotfiles repository
+dotfiles_repo=~/dotfiles
+
+if [ -d "$dotfiles_repo" ] && [ -d "$dotfiles_repo/.git" ]; then
+  # Check if there are uncommitted changes
+  git -C "$dotfiles_repo" diff --quiet || echo "Warning: Uncommitted changes detected in your ~/dotfiles repository!"
+fi
 
 ###############################################################################
 # ChatGPT

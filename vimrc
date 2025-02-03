@@ -243,17 +243,9 @@ map <leader>ss :setlocal spell!<cr>
 map ww :call Preserve("normal vi'")<CR>
  
 
-":vmap sp "zdi<?php <C-R>z ?><Esc> 
-": wrap <?php ?> around visually selected text
-
-"nmap <leader>r :ChromeReload<CR>
-"autocmd FileType java map <leader>r :exe "! mvn package"<cr>
-
 nmap <leader>] :call Preserve(">>")<CR>
 nmap <leader>[ :call Preserve("<<")<CR>
 
-"Unitest
-"nnoremap <leader>u :call RunPHPUnitTest()<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Outline
@@ -275,11 +267,6 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=NONE
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
 let g:indent_guides_start_level = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Easytags
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -509,6 +496,21 @@ map <leader>t <Plug>TaskList
 let g:tlWindowPosition = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Easymotion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Prettier
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+autocmd FileType javascript set formatprg=prettier\ --stdin
+nnoremap <silent> <F4> :normal gggqG\<C-o>\<C-o><CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Search n Find
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
@@ -536,33 +538,7 @@ function! VisualSelection(direction) range
     let @" = l:saved_reg
 endfunction
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Shit i don't know wtf but don't have the ballz to delete 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
- "This sets up the command to open files within the current file's path
-" cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-" map <leader>ew :e %%
-" map <leader>es :sp %%
-" map <leader>ev :vsp %%
-" map <leader>et :tabe %%
-
- " Easier to type, and I never use the default behavior.
-" noremap H ^
-" noremap L $
-" vnoremap L g_
-
-"Add  shortcut to switch thru buffers
-"
-"Add cmd E to do find, election or word and highlight the results
-"Add cmd g to flip thru results
-"Add cmd G to flip thru reslts backwards
-
-"Add shortcuts to navigate thru splits
-"
-"lk
- function! Preserve(command)
+function! Preserve(command)
   let _s=@/
   let l = line(".")
   let c = col(".")
@@ -570,7 +546,7 @@ endfunction
   execute a:command
   let @/=_s
   call cursor(l, c)
- endfunction
+endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -586,8 +562,6 @@ set undodir=~/.vim/tmp/undo/
 set backupdir=~/.vim/tmp/backup/
 set directory=~/.vim/tmp/swap/
 
-
-
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
   call mkdir(expand(&undodir), "p")
@@ -600,259 +574,5 @@ if !isdirectory(expand(&directory))
 endif
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Unitest
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-"function! RunPHPUnitTest()
-"    cd %:p:h
-"    let result = system("sudo phpunit --configuration app/phpunit.xml " . bufname("%"))
-"    split __PHPUnit_Result__
-"    normal! ggdG
-"    setlocal buftype=nofile
-"    call append(0, split(result, '\v\n'))
-"    cd -
-"endfunction
 
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Easymotion
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => MatchTag
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'twig' : 1,
-    \}
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => YouCompleteMe
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Prettier
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-autocmd FileType javascript set formatprg=prettier\ --stdin
-"autocmd BufWritePre *.js :normal gggqG
-
-nnoremap <silent> <F4> :normal gggqG\<C-o>\<C-o><CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Unite
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-"let g:unite_data_directory=s:get_cache_dir('unite')
-"let g:unite_source_history_yank_enable=1
-"let g:unite_source_rec_max_cache_files=5000
-
-"if executable('ag')
-"    let g:unite_source_grep_command='ag'
-"    let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C4'
-"    let g:unite_source_grep_recursive_opt=''
-"elseif executable('ack')
-"    let g:unite_source_grep_command='ack'
-"    let g:unite_source_grep_default_opts='--no-heading --no-color -C4'
-"    let g:unite_source_grep_recursive_opt=''
-"endif
-
-"function! s:unite_settings()
-"    nmap <buffer> Q <plug>(unite_exit)
-"    nmap <buffer> <esc> <plug>(unite_exit)
-"    imap <buffer> <esc> <plug>(unite_exit)
-"endfunction
-
-"autocmd FileType unite call s:unite_settings()
-
-"nmap <space> [unite]
-"nnoremap [unite] <nop>
-
-"nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async:! buffer file_mru bookmark<cr><c-u>
-""nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -start-insert -buffer-name=files file_rec/async:!<cr><c-u>
-"nnoremap <silent> [unite]e :<C-u>Unite -buffer-name=recent file_mru<cr>
-"nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
-"nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
-""nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer file_mru<cr>
-"nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
-"nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
-"nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Phpcs Fixer
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" If php-cs-fixer is in $PATH, you don't need to define line below
-"let g:php_cs_fixer_path = "/usr/local/bin/php-cs-fixer" " define the path to the php-cs-fixer.phar
-"let g:php_cs_fixer_level = "symfony"              " which level ?
-"let g:php_cs_fixer_config = "default"             " configuration
-"let g:php_cs_fixer_config_file = '.php_cs'       " configuration file
-"let g:php_cs_fixer_php_path = "php"               " Path to PHP
-" If you want to define specific fixers:
-"let g:php_cs_fixer_fixers_list = "linefeed,short_tag,indentation"
-"let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
-"let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-"let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Telescope
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"nnoremap <leader>ff <cmd>Telescope find_files<cr>
-"nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-"nnoremap <leader>fb <cmd>Telescope buffers<cr>
-"nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => EchoDoc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:echodoc#enable_at_startup=1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Symfony settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-"let g:symfony_enable_shell_mapping = 0
-
-"map <F12> :call OpenSymfonyConsole()<CR>
-"fun! OpenSymfonyConsole()
-""    silent !clear
-"    :execute ":! php app/console -s --no-ansi"
-"endfun
-"
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Semshi
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-"function MyCustomHighlights()
-    "hi semshiLocal           ctermfg=209 guifg=#ff875f
-    "hi semshiGlobal          ctermfg=214 guifg=#ffaf00
-    "hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
-    "hi semshiParameter       ctermfg=75  guifg=#5fafff
-    "hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
-    "hi semshiFree            ctermfg=218 guifg=#ffafd7
-    "hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
-    "hi semshiAttribute       ctermfg=49  guifg=#00ffaf
-    "hi semshiSelf            ctermfg=249 guifg=#b2b2b2
-    "hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
-    "hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
-"
-    "hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-    "hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-    "sign define semshiError text=E> texthl=semshiErrorSign
-"endfunction
-
-" autocmd FileType python call MyCustomHighlights()
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vundle Settings.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" set the runtime path to include Vundle and initialize
-"
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-
-"""""""""""""""""""""""""""""""""""""""
-" Editor 
-"
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-
-"Plugin 'airblade/vim-gitgutter'
-
-"""""""""""""""""""""""""""""""""""""""
-" File Navigation
-"
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'kien/ctrlp.vim'
-
-"""""""""""""""""""""""""""""""""""""""
-" Code Style
-"
-"Plugin 'dense-analysis/ale'
-"Plugin 'vim-scripts/indentpython.vim'
-"Plugin 'vim-python/python-syntax'
-"Plugin 'nvie/vim-flake8'
-
-"""""""""""""""""""""""""""""""""""""""
-" Testing
-"Plugin 'vim-test/vim-test'
-
-
-"""""""""""""""""""""""""""""""""""""""
-" Editor 
-"""""""""""""""""""""""""""""""""""""""
-" Utilities
-"Plugin 'adinapoli/vim-markmultiple'
-"Plugin 'dkprice/vim-easygrep'
-"Plugin 'scrooloose/nerdcommenter'
-"Plugin 'nathanaelkane/vim-indent-guides'
-"Plugin 'easymotion/vim-easymotion'
-
-"Plugin 'Raimondi/delimitMate'
-"Plugin 'pangloss/vim-javascript'
-"Plugin 'jelera/vim-javascript-syntax'
-"
-"Plugin 'puremourning/vimspector'
-"Plugin 'jremmen/vim-ripgrep'
-"Plugin 'davidhalter/jedi-vim'
-
-"Plugin 'tmhedberg/matchit'
-"Plugin 'justinmk/vim-sneak'
-
-"call vundle#end()            " required
-"filetype plugin indent on    " required
-
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => UltiSniip
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-
-"let g:snippets_dir = "~/.vim/bundle/vim-snippets/snippets"
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-""let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
-
-"function! g:UltiSnips_Complete()
-    "call UltiSnips#ExpandSnippet()
-    "if g:ulti_expand_res == 0
-        "if pumvisible()
-            "return "\<C-n>"
-        "else
-            "call UltiSnips#JumpForwards()
-            "if g:ulti_jump_forwards_res == 0
-               "return "\<TAB>"
-            "endif
-        "endif
-    "endif
-    "return ""
-"endfunction
-
-"au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsListSnippets="<c-e>"
-" this mapping Enter key to <C-y> to chose the current highlight item 
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"

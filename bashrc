@@ -8,6 +8,7 @@ export HISTSIZE=1000
 export HISTFILESIZ=25000
 export HISTCONTROL=ignoredups 
 
+LS_COLORS='di=0;35:fi=0;37'
 # Set the terminal background and text color
 export TERM=xterm-256color
 
@@ -32,8 +33,6 @@ if [ "$show_host_in_ps1" = yes ]; then
 else
     PS1='\[\033[01;32m\]┌──${debian_chroot:+($debian_chroot)}(\[\033[00m\]\u\[\033[01;32m\])-[\[\033[01;34m\]\w\[\033[01;32m\]]$(__git_ps1)\n└─\[\033[00m\]\$'
 fi
-
-
 
 
 # function to set terminal title  

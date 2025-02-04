@@ -83,6 +83,34 @@ if [ -d "$dotfiles_repo" ] && [ -d "$dotfiles_repo/.git" ]; then
   git -C "$dotfiles_repo" diff --quiet || echo "Warning: Uncommitted changes detected in your ~/dotfiles repository!"
 fi
 
+# Function to check for remote branch changes in ~/dotfiles
+check_git_remote_changes() {
+  # Navigate to the ~/dotfiles directory
+  cd ~/dotfiles || { echo "Failed to navigate to ~/dotfiles"; return 1; }
+
+  # Make sure we're in a git repository
+  if [ ! -d ".git" ]; then
+    echo "Not a git repository!"
+    return 1
+  fi
+
+  # Fetch the latest updates from the remote
+  git fetch --quiet
+
+  # Get the current branch
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+  # Check if the local branch is behind the remote
+  behind_count=$(git rev-list --count ${current_branch}..origin/${current_branch})
+
+  if [ "$behind_count" -gt 0 ]; then
+    echo "Warning: Your local branch is behind the remote by $behind_count commit(s). Run 'git pull' to update."
+  fi
+}
+
+# Automatically check for remote changes in ~/dotfiles repo whenever a new shell starts
+check_git_remote_changes
+
 ###############################################################################
 # ChatGPT
 ###############################################################################

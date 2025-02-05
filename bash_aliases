@@ -44,3 +44,6 @@ alias cls='clear'
 alias cp='cp -v'
 alias mv='mv -v'
 alias rm='rm -v'
+
+# Docker
+# alias dockerps='docker ps -a'

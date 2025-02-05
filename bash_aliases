@@ -4,8 +4,6 @@ alias help='man'
 alias quit='exit'
 
 alias ls='ls -alrtF'
-alias la='ls -A'
-alias l='ls -CF'
 
 # Python
 alias venv='source env/bin/activate'
@@ -23,7 +21,6 @@ alias vimrc='vim ~/dotfiles/vimrc'
 alias dirtychrome="open -a Google\ Chrome --args --disable-web-security"
 
 # Git
-alias gs="git status"
 alias updater="git pull origin dev"
 alias pusher="git push origin dev"
 

@@ -50,3 +50,13 @@ then run
 ```
 :PlugInstall
 ```
+
+## Git Stuff
+Add this to ~/.gitconfig
+```shell
+[include]
+    path = ~/dotfiles/gitconfig.common
+```
+a bit awkward, but there's value in having each computer with its own identity.
+Adding commands the 'git way' to test/try out and move to gitconfig.common when/if they're ready. 
+

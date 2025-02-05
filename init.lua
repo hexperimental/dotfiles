@@ -188,7 +188,7 @@ require("lazy").setup({
 				changedelete = { text = "~" },
 			},
 		},
-	},
+	},{ "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",

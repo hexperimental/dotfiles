@@ -1,4 +1,4 @@
-
+clear 
 #Overwrite this inside the _env
 show_host_in_ps1=yes
 OPENAI_API_KEY=

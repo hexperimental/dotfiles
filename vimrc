@@ -24,6 +24,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin()
 
+Plug '~/.vim/pack/myplugins/start/vim-hxdraft'
 """""""""""""""""""""""""""""""""""""""
 " Editor 
 "
@@ -254,6 +255,12 @@ map ww :call Preserve("normal vi'")<CR>
 nmap <leader>] :call Preserve(">>")<CR>
 nmap <leader>[ :call Preserve("<<")<CR>
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => HxDrafts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Define the path to your script directory
+let g:scripts_dir = '~/scripts/'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Outline

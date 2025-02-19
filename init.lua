@@ -188,7 +188,38 @@ require("lazy").setup({
 				changedelete = { text = "~" },
 			},
 		},
-	},{ "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
+	},
+	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
+	{
+		{
+			"FabijanZulj/blame.nvim",
+			lazy = false,
+			config = function()
+				require("blame").setup({})
+			end,
+		},
+	},
+	{
+		"stevearc/aerial.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("aerial").setup({
+				-- optionally use on_attach to set keymaps when aerial has attached to a buffer
+				on_attach = function(bufnr)
+					-- Jump forwards/backwards with '{' and '}'
+					vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+					vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+				end,
+			})
+			-- You probably also want to set a keymap to toggle aerial
+			vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle<CR>")
+		end,
+	},
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
@@ -609,7 +640,16 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{
+		"tomasr/molokai",
+		-- optionally, you can give it a name or other lazy settings
+		-- name = "molokai-colorscheme",
 
+		-- Make sure you load the colorscheme when this plugin is loaded
+		config = function()
+			vim.cmd("colorscheme molokai")
+		end,
+	},
 	{ -- Autoformat
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },

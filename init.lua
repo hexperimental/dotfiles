@@ -196,6 +196,7 @@ require("lazy").setup({
 			lazy = false,
 			config = function()
 				require("blame").setup({})
+				vim.keymap.set("n", "<leader>gg", "<cmd>BlameToggle window<CR>")
 			end,
 		},
 	},

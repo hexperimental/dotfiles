@@ -226,6 +226,7 @@ workspace 8 output DP-3-1
 workspace 9 output DP-3-1
 
 
+exec --no-startup-id feh --bg-scale ~/Pictures/hackers_4-wallpaper-1680x1050.jpg
 # Assign Terminal to workspace 4
 #assign [class="Gnome-terminal"] → 4
 

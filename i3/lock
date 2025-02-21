@@ -4,4 +4,4 @@
 IMAGE_PATH="$HOME/Pictures/lock-screen.png"
 
 # Lock the screen using the image as background
-i3lock -i "$IMAGE_PATH" -e -f -c 000000
+i3lock -i "$IMAGE_PATH" -e -f -c 111111 

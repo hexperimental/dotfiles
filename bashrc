@@ -53,13 +53,17 @@ function tabtitle() {
   TITLE="\[\e]2;$*\a\]"
   PS1=${ORIG}${TITLE}
 }
-
+, i get an error: TERM environment variable not set, .bashrc line 62 bind
 # Make sure this works on linux
 function tabname {
   printf "\e]1;$1\a"
 }
 
-bind "set completion-ignore-case on"
+# Enable case-insensitive tab completion, but avoid errors in i3
+if [[ "$-" == *i* ]] && [[ "$DESKTOP_SESSION" != "i3" ]] && [[ -n "$TERM" ]]; then
+    bind "set completion-ignore-case on"
+fi
+#bind "set completion-ignore-case on"
 
 #setting up colors on the terminal
 export CLICOLOR=1

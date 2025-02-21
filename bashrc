@@ -53,7 +53,6 @@ function tabtitle() {
   TITLE="\[\e]2;$*\a\]"
   PS1=${ORIG}${TITLE}
 }
-, i get an error: TERM environment variable not set, .bashrc line 62 bind
 # Make sure this works on linux
 function tabname {
   printf "\e]1;$1\a"

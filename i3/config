@@ -190,9 +190,15 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+    position top
+    status_command i3status
+    font pango:monospace 10
+    colors {
+        background #222222
+        statusline #ffffff
+        separator #666666
+    }
 }
-
 
 # Custom 
 #
@@ -203,17 +209,51 @@ gaps outer 8
 smart_gaps on
 
 bindsym $mod+Shift+f exec firefox
-bindsym $mod+Ctrl+l exec i3lock -c aaaaaa
 
+#bindsym $mod+Ctrl+l exec i3lock -c aaaaaa
+bindsym $mod+Ctrl+l exec /home/antonio/dotfiles/lock
 
 workspace 1 output eDP-1
 workspace 2 output eDP-1
 workspace 3 output eDP-1
 
-workspace 4 output DP-3-1
-workspace 5 output DP-3-1
-workspace 6 output DP-3-1
+workspace 4 output DP-3-2
+workspace 5 output DP-3-2
+workspace 6 output DP-3-2
 
-workspace 7 output DP-3-2
-workspace 8 output DP-3-2
-workspace 9 output DP-3-2
+workspace 7 output DP-3-1
+workspace 8 output DP-3-1
+workspace 9 output DP-3-1
+
+
+# Assign Terminal to workspace 4
+#assign [class="Gnome-terminal"] → 4
+
+# Assign Browser and Slack to workspace 3
+#assign [class="firefox_firefox"] → 2
+#assign [class="Slack"] → 3
+
+# Assign Obsidian and a terminal to workspace 1
+#assign [class="Obsidian"] → 1
+#assign [class="firefox_firefox"] → 1
+
+# Start terminal in workspace 4
+#exec --no-startup-id i3-msg "workspace 4; exec Gnome-terminal"
+
+# Start browser and Slack in workspace 3
+#exec --no-startup-id i3-msg "workspace 3; exec firefox"
+#exec --no-startup-id i3-msg "workspace 3; exec slack"
+
+# Start Obsidian and another terminal in workspace 1
+exec --no-startup-id i3-msg "workspace 1; exec obsidian"
+exec --no-startup-id i3-msg "workspace 1; exec Gnome-terminal"
+exec --no-startup-id i3-msg "workspace 1; exec Files"
+
+exec --no-startup-id i3-msg "workspace 2; exec firefox"
+exec --no-startup-id i3-msg "workspace 2; exec firefox"
+
+exec --no-startup-id i3-msg "workspace 3; exec Slack"
+exec --no-startup-id i3-msg "workspace 3; exec firefox"
+exec --no-startup-id i3-msg "workspace 3; exec firefox"
+
+

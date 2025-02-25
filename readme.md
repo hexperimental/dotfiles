@@ -25,6 +25,7 @@ Then we link the good stuff.
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/bashrc ~/.bashrc
 ln -s ~/dotfiles/gitconfig ~/.gitconfig
+ln -s ~/dotfiles/i3/config ~/.config/i3/conf
 ```
 
 There are aliases to edit the files 

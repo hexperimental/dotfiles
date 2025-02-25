@@ -217,6 +217,9 @@ bar {
 # Custom 
 #
 hide_edge_borders smart
+for_window [class="^.*"] border pixel 3
+default_floating_border none
+default_floating_border normal 0
 
 gaps inner 8
 gaps outer 8
@@ -274,3 +277,14 @@ exec --no-startup-id i3-msg "workspace 3; exec firefox"
 
 exec --no-startup-id env TERM=xterm-256color
 exec --no-startup-id volumeicon
+ 
+exec --no-startup-id xinput set-prop "VEN_06CB:00 06CB:CE7E Touchpad" "libinput Natural Scrolling Enabled" --type=int --format=8 1
+exec --no-startup-id xinput set-prop "pointer:Razer Razer Cobra" "libinput Natural Scrolling Enabled" --type=int --format=8 1
+
+# Set border colors for different window states
+# client.focused        <border> <bgrnd> <text> <indicator>
+client.focused          #ff0000 #ff0000 #ff0000 #ffffff
+client.focused_inactive #555555 #555555 #555555 #ffffff
+client.unfocused        #333333 #333333 #333333 #ffffff
+client.urgent           #ff0000 #ff0000 #ff0000 #ffffff
+

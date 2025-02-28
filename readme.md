@@ -70,3 +70,8 @@ Add this to ~/.gitconfig
 a bit awkward, but there's value in having each computer with its own identity.
 Adding commands the 'git way' to test/try out and move to gitconfig.common when/if they're ready. 
 
+## Music config
+
+https://gist.github.com/lirenlin/f92c8e849530ebf66604
+
+

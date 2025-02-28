@@ -210,7 +210,7 @@ bar {
 # Custom 
 #
 hide_edge_borders smart
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 5
 default_floating_border none
 default_floating_border normal 0
 
@@ -236,7 +236,8 @@ workspace 8 output DP-3-1
 workspace 9 output DP-3-1
 
 
-exec --no-startup-id feh --bg-scale ~/Pictures/hackers_4-wallpaper-1680x1050.jpg
+#exec --no-startup-id feh --bg-scale ~/Pictures/hackers_4-wallpaper-1680x1050.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/surfbackground.jpg
 # Assign Terminal to workspace 4
 #assign [class="Gnome-terminal"] → 4
 
@@ -256,16 +257,22 @@ exec --no-startup-id feh --bg-scale ~/Pictures/hackers_4-wallpaper-1680x1050.jpg
 #exec --no-startup-id i3-msg "workspace 3; exec slack"
 
 # Start Obsidian and another terminal in workspace 1
-exec --no-startup-id i3-msg "workspace 1; exec obsidian"
-exec --no-startup-id i3-msg "workspace 1; exec Gnome-terminal"
-exec --no-startup-id i3-msg "workspace 1; exec Files"
+# AUTOSTART
+#exec --no-startup-id i3-msg "workspace 1; exec obsidian"
+#exec --no-startup-id i3-msg "workspace 1; exec Gnome-terminal"
+#exec --no-startup-id i3-msg "workspace 1; exec Files"
+#
+#exec --no-startup-id i3-msg "workspace 2; exec firefox"
+#exec --no-startup-id i3-msg "workspace 2; exec firefox"
+#
+#exec --no-startup-id i3-msg "workspace 3; exec Slack"
+#exec --no-startup-id i3-msg "workspace 3; exec firefox"
+#exec --no-startup-id i3-msg "workspace 3; exec firefox"
 
-exec --no-startup-id i3-msg "workspace 2; exec firefox"
-exec --no-startup-id i3-msg "workspace 2; exec firefox"
 
-exec --no-startup-id i3-msg "workspace 3; exec Slack"
-exec --no-startup-id i3-msg "workspace 3; exec firefox"
-exec --no-startup-id i3-msg "workspace 3; exec firefox"
+
+
+
 
 
 exec --no-startup-id env TERM=xterm-256color
@@ -276,58 +283,60 @@ exec --no-startup-id xinput set-prop "pointer:Razer Razer Cobra" "libinput Natur
 
 # Set border colors for different window states
 # client.focused        <border> <bgrnd> <text> <indicator>
-client.focused          #ff0000 #ff0000 #ff0000 #ffffff
+client.focused          #0000ee #0000ee #0000ee #ffffff
 client.focused_inactive #555555 #555555 #555555 #ffffff
 client.unfocused        #333333 #333333 #333333 #ffffff
 client.urgent           #ff0000 #ff0000 #ff0000 #ffffff
 
-set $i3_resurrect i3-resurrect
+#set $i3_resurrect i3-resurrect
 
 # Save workspace mode.
-mode "save" {
-  bindsym 1 exec $i3_resurrect save -w 1
-  bindsym 2 exec $i3_resurrect save -w 2
-  bindsym 3 exec $i3_resurrect save -w 3
-  bindsym 4 exec $i3_resurrect save -w 4
-  bindsym 5 exec $i3_resurrect save -w 5
-  bindsym 6 exec $i3_resurrect save -w 6
-  bindsym 7 exec $i3_resurrect save -w 7
-  bindsym 8 exec $i3_resurrect save -w 8
-  bindsym 9 exec $i3_resurrect save -w 9
-  bindsym 0 exec $i3_resurrect save -w 0
+#mode "save" {
+#  bindsym 1 exec $i3_resurrect save -w 1
+#  bindsym 2 exec $i3_resurrect save -w 2
+#  bindsym 3 exec $i3_resurrect save -w 3
+#  bindsym 4 exec $i3_resurrect save -w 4
+#  bindsym 5 exec $i3_resurrect save -w 5
+#  bindsym 6 exec $i3_resurrect save -w 6
+#  bindsym 7 exec $i3_resurrect save -w 7
+#  bindsym 8 exec $i3_resurrect save -w 8
+#  bindsym 9 exec $i3_resurrect save -w 9
+#  bindsym 0 exec $i3_resurrect save -w 0
+#
+#  # Back to normal: Enter, Escape, or s
+#  bindsym Return mode "default"
+#  bindsym Escape mode "default"
+#  bindsym s mode "default"
+#  bindsym $mod+s mode "default"
+#}
+#
+#bindsym $mod+s mode "save"
+#
+### Restore workspace mode.
+#mode "restore" {
+#  bindsym 1 exec $i3_resurrect restore -w 1
+#  bindsym 2 exec $i3_resurrect restore -w 2
+#  bindsym 3 exec $i3_resurrect restore -w 3
+#  bindsym 4 exec $i3_resurrect restore -w 4
+#  bindsym 5 exec $i3_resurrect restore -w 5
+#  bindsym 6 exec $i3_resurrect restore -w 6
+#  bindsym 7 exec $i3_resurrect restore -w 7
+#  bindsym 8 exec $i3_resurrect restore -w 8
+#  bindsym 9 exec $i3_resurrect restore -w 9
+#  bindsym 0 exec $i3_resurrect restore -w 0
 
-  # Back to normal: Enter, Escape, or s
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym s mode "default"
-  bindsym $mod+s mode "default"
-}
-
-bindsym $mod+s mode "save"
-
-# Restore workspace mode.
-mode "restore" {
-  bindsym 1 exec $i3_resurrect restore -w 1
-  bindsym 2 exec $i3_resurrect restore -w 2
-  bindsym 3 exec $i3_resurrect restore -w 3
-  bindsym 4 exec $i3_resurrect restore -w 4
-  bindsym 5 exec $i3_resurrect restore -w 5
-  bindsym 6 exec $i3_resurrect restore -w 6
-  bindsym 7 exec $i3_resurrect restore -w 7
-  bindsym 8 exec $i3_resurrect restore -w 8
-  bindsym 9 exec $i3_resurrect restore -w 9
-  bindsym 0 exec $i3_resurrect restore -w 0
-
-  # Back to normal: Enter, Escape, or n
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym n mode "default"
-  bindsym $mod+n mode "default"
-}
-
-bindsym $mod+n mode "restore"
-## KEY REMAP
-#exec --no-startup-id xmodmap ~/.Xmodmap
+#  # Back to normal: Enter, Escape, or n
+#  bindsym Return mode "default"
+#  bindsym Escape mode "default"
+#  bindsym n mode "default"
+#  bindsym $mod+n mode "default"
+#}
+#
+#bindsym $mod+n mode "restore"
+### KEY REMAP
 exec --no-startup-id setxkbmap -option ctrl:swap_lalt_lctl -option ctrl:swap_ralt_rctl
+
 # Screenshots
 bindsym $mod+Mod1+4 exec flameshot gui
+
+#Scratchpad

@@ -7,7 +7,11 @@ alias :q='exit'
 alias help='man'
 alias quit='exit'
 
-alias ls='ls -alrtF'
+alias ..='cd ..'
+alias ...='cd ../..'
+
+#alias ls='ls -alrtF'
+alias ls='eza -l --sort=modified --reverse'
 
 # Python
 alias venv='source env/bin/activate'
@@ -39,7 +43,7 @@ alias pusher="git push origin dev"
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
-    alias ls='ls -lartF --color=auto'
+    #alias ls='ls -lartF --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'

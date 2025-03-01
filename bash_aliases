@@ -1,3 +1,7 @@
+# Overwriteable 
+alias notes='cd ~/Notes'
+alias dotfiles='cd ~/dotfiles'
+
 # General
 alias :q='exit'
 alias help='man'
@@ -19,6 +23,13 @@ alias vimrc='vim ~/dotfiles/vimrc'
 
 
 alias dirtychrome="open -a Google\ Chrome --args --disable-web-security"
+
+# Docker
+alias dockerps='docker ps -a'
+
+function dockernuke() {
+    docker restart $(docker ps -q)
+}
 
 # Git
 alias updater="git pull origin dev"
@@ -45,5 +56,3 @@ alias cp='cp -v'
 alias mv='mv -v'
 alias rm='rm -v'
 
-# Docker
-# alias dockerps='docker ps -a'

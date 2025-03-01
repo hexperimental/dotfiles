@@ -25,6 +25,7 @@ Then we link the good stuff.
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/bashrc ~/.bashrc
 ln -s ~/dotfiles/gitconfig ~/.gitconfig
+ln -s ~/dotfiles/i3/config ~/.config/i3/conf
 ```
 
 There are aliases to edit the files 
@@ -68,4 +69,9 @@ Add this to ~/.gitconfig
 ```
 a bit awkward, but there's value in having each computer with its own identity.
 Adding commands the 'git way' to test/try out and move to gitconfig.common when/if they're ready. 
+
+## Music config
+
+https://gist.github.com/lirenlin/f92c8e849530ebf66604
+
 

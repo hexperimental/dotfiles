@@ -237,41 +237,7 @@ workspace 8 output DP-3-1
 workspace 9 output DP-3-1
 
 
-#exec --no-startup-id feh --bg-scale ~/Pictures/hackers_4-wallpaper-1680x1050.jpg
 exec --no-startup-id feh --bg-scale ~/Pictures/surfbackground.jpg
-# Assign Terminal to workspace 4
-#assign [class="Gnome-terminal"] → 4
-
-# Assign Browser and Slack to workspace 3
-#assign [class="firefox_firefox"] → 2
-#assign [class="Slack"] → 3
-
-# Assign Obsidian and a terminal to workspace 1
-#assign [class="Obsidian"] → 1
-#assign [class="firefox_firefox"] → 1
-
-# Start terminal in workspace 4
-#exec --no-startup-id i3-msg "workspace 4; exec Gnome-terminal"
-
-# Start browser and Slack in workspace 3
-#exec --no-startup-id i3-msg "workspace 3; exec firefox"
-#exec --no-startup-id i3-msg "workspace 3; exec slack"
-
-# Start Obsidian and another terminal in workspace 1
-# AUTOSTART
-#exec --no-startup-id i3-msg "workspace 1; exec obsidian"
-#exec --no-startup-id i3-msg "workspace 1; exec Gnome-terminal"
-#exec --no-startup-id i3-msg "workspace 1; exec Files"
-#
-#exec --no-startup-id i3-msg "workspace 2; exec firefox"
-#exec --no-startup-id i3-msg "workspace 2; exec firefox"
-#
-#exec --no-startup-id i3-msg "workspace 3; exec Slack"
-#exec --no-startup-id i3-msg "workspace 3; exec firefox"
-#exec --no-startup-id i3-msg "workspace 3; exec firefox"
-
-
-
 
 
 

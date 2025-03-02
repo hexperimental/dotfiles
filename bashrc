@@ -7,6 +7,7 @@ clear
 show_host_in_ps1=yes
 OPENAI_API_KEY=
 export TEXT_LANDER_PATH=
+export NOTES_DIR=
 
 export EDITOR=vim
 export HISTSIZE=1000
@@ -72,6 +73,29 @@ fi
 export CLICOLOR=1
 # LS Color Scheme off this tool:  http://geoff.greer.fm/lscolors/
 export LSCOLORS=EafacadaBaeaeababacaca
+
+###############################################################################
+# Functions
+###############################################################################
+
+meetingnote() {
+    TEMPLATE="$NOTES_DIR/Meetings/Template.md"
+    DEST_DIR="$NOTES_DIR/Meetings"
+
+    # Generate filename with timestamp format YYYY-MM-DD--HH:mm.md
+    FILENAME="$(date '+%Y-%m-%d--%H:%M').md"
+    DEST_FILE="$DEST_DIR/$FILENAME"
+
+    # Copy the template to the new file
+    cp "$TEMPLATE" "$DEST_FILE"
+
+    # Open the new file in Neovim
+    nvim "$DEST_FILE"
+}
+
+export -f meetingnote
+
+
 
 ###############################################################################
 # Git 

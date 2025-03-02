@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # This script  sets up a 'meeting space' on i3 ready to work. browser for meeting on top and nvim for notes on the bottom. 
 # Switch to workspace 0
 i3-msg "workspace 0"

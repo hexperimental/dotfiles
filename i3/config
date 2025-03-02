@@ -237,9 +237,7 @@ workspace 8 output DP-3-1
 workspace 9 output DP-3-1
 
 
-exec --no-startup-id feh --bg-scale ~/Pictures/surfbackground.jpg
-
-
+exec --no-startup-id feh --bg-scale ~/dotfiles/images/wallpapers/surfbackground.jpg
 
 
 exec --no-startup-id env TERM=xterm-256color

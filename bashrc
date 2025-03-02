@@ -1,7 +1,7 @@
 clear 
 
 # Check for interactive shell
-[[ $- != *i* ]] && return
+#[[ $- != *i* ]] && return
 
 #Overwrite this inside the _env
 show_host_in_ps1=yes

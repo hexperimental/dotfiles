@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCRIPT_DIR="$HOME/dotfiles/scripts"
+SCRIPT_DIR="$HOME/dotfiles/scripts/work"
 SCRIPT_NAME="$1"
 
 # Ensure script exists and is executable

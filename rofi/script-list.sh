@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCRIPT_DIR="$HOME/dotfiles/scripts"
+SCRIPT_DIR="$HOME/dotfiles/scripts/work"
 
 # If no argument is passed, list all executable scripts
 if [[ -z "$@" ]]; then

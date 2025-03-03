@@ -10,8 +10,10 @@ alias quit='exit'
 alias ..='cd ..'
 alias ...='cd ../..'
 
-#alias ls='ls -alrtF'
-alias ls='eza -l --sort=modified --reverse'
+alias ls='ls -alrtF'
+if command -v eza &> /dev/null; then
+    alias ls='eza -l --sort=modified --reverse'
+fi
 
 # Python
 alias venv='source env/bin/activate'

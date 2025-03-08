@@ -74,4 +74,10 @@ Adding commands the 'git way' to test/try out and move to gitconfig.common when/
 
 https://gist.github.com/lirenlin/f92c8e849530ebf66604
 
+## Random notes
 
+### Install
+- feh
+- i3
+- rofi
+- fastfetch `apt install fastfetch`

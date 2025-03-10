@@ -250,7 +250,7 @@ exec --no-startup-id xinput set-prop "pointer:Razer Razer Cobra" "libinput Natur
 
 # Set border colors for different window states
 # client.focused        <border> <bgrnd> <text> <indicator>
-client.focused          #0000ee #0000ee #0000ee #ffffff
+client.focused          #34e8eb #34e8eb #34e8eb #ffffff
 client.focused_inactive #555555 #555555 #555555 #ffffff
 client.unfocused        #333333 #333333 #333333 #ffffff
 client.urgent           #ff0000 #ff0000 #ff0000 #ffffff

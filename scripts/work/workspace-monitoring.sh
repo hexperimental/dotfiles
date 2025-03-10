@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Monitoring
-i3-msg "workspace 4"
+i3-msg "workspace 5"
 # Open the first terminal (left)
 i3-msg "exec gnome-terminal"
 sleep 0.5 

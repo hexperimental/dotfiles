@@ -24,7 +24,7 @@ Then we link the good stuff.
 ```bash
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/bashrc ~/.bashrc
-ln -s ~/dotfiles/gitconfig ~/.gitconfig
+cp ~/dotfilew/gitconfig ~/.gitconfig
 ln -s ~/dotfiles/i3/config ~/.config/i3/conf
 ```
 
@@ -43,6 +43,13 @@ To source the bash after updates
 reload
 ```
 
+## Rofi
+
+```bash
+sudo apt instal rofi
+mkdir ~/.confif/rofi
+ln -s ~/dotfiles/rofi/config.rasi ~/.config/rofi/config.rasi
+```
 
 
 ## Vim Stuff
@@ -59,6 +66,23 @@ vimrc
 then run 
 ```
 :PlugInstall
+```
+
+
+## nvim
+```bash
+sudo apt update
+sudo apt install make gcc ripgrep unzip git xclip curl
+
+# Now we install nvim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+sudo rm -rf /opt/nvim-linux-x86_64
+sudo mkdir -p /opt/nvim-linux-x86_64
+sudo chmod a+rX /opt/nvim-linux-x86_64
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+
+# make it available in /usr/local/bin, distro installs to /usr/bin
+sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/
 ```
 
 ## Git Stuff
@@ -81,3 +105,4 @@ https://gist.github.com/lirenlin/f92c8e849530ebf66604
 - i3
 - rofi
 - fastfetch `apt install fastfetch`
+- nvim

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Set the lock screen image path
-IMAGE_PATH="$HOME/Pictures/lock-screen.png"
+IMAGE_PATH="$HOME/Pictures/lock-screen-matrix-bg.png"
 
 # Lock the screen using the image as background
 i3lock -i "$IMAGE_PATH" -e -f -c 111111 

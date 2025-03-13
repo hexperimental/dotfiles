@@ -106,3 +106,5 @@ https://gist.github.com/lirenlin/f92c8e849530ebf66604
 - rofi
 - fastfetch `apt install fastfetch`
 - nvim
+- bumblebee-status https://github.com/tobi-wan-kenobi/bumblebee-status
+

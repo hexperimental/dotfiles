@@ -107,4 +107,4 @@ https://gist.github.com/lirenlin/f92c8e849530ebf66604
 - fastfetch `apt install fastfetch`
 - nvim
 - bumblebee-status https://github.com/tobi-wan-kenobi/bumblebee-status
-
+- green clip, wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip

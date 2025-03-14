@@ -179,34 +179,44 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-    position top
-    status_command i3status
-    font pango:monospace 14
-    colors {
-        background #222222
-        statusline #ffffff
-        separator #666666
-    }
-    #output eDP-1
-}
-bar {
-    position top
-    output DP-2-2
-    status_command i3status
-    tray_output none
-    font pango:monospace 9
-}
+## BAR
 
 bar {
+    font pango:Inconsolata 12
     position top
-    output DP-2-1
-    status_command i3status
-    tray_output none
-    font pango:monospace 9
+    status_command /usr/bin/bumblebee-status \
+    -m nic datetime xrandr battery \
+    -t night-powerline
 }
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#    position top
+#    status_command i3status
+#    font pango:monospace 14
+#    colors {
+#        background #222222
+#        statusline #ffffff
+#        separator #666666
+#    }
+#    #output eDP-1
+#}
+#bar {
+#    position top
+#    output DP-2-2
+#    status_command i3status
+#    tray_output none
+#    font pango:monospace 9
+#}
+
+#bar {
+#    position top
+#    output DP-2-1
+#    status_command i3status
+#    tray_output none
+#    font pango:monospace 9
+#}
 
 # Custom 
 #
@@ -243,6 +253,7 @@ exec --no-startup-id feh --bg-scale ~/dotfiles/images/wallpapers/surfbackground.
 
 
 exec --no-startup-id env TERM=xterm-256color
+## sudo apt install volumeicon-alsa
 exec --no-startup-id volumeicon
 
 #Dell IO
@@ -251,6 +262,8 @@ exec --no-startup-id xinput set-prop "pointer:Razer Razer Cobra" "libinput Natur
 
 exec --no-startup-id xinput set-prop "SYNA88022:00 06CB:CE67 Touchpad" "libinput Natural Scrolling Enabled" --type=int --format=8 1
 
+
+## BlackPearl
 
 # Set border colors for different window states
 # client.focused        <border> <bgrnd> <text> <indicator>

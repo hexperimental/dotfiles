@@ -232,7 +232,7 @@ smart_gaps on
 bindsym $mod+Shift+f exec firefox
 
 #bindsym $mod+Ctrl+l exec i3lock -c aaaaaa
-bindsym $mod+Ctrl+l exec /home/antonio/dotfiles/i3/lock
+bindsym $mod+Ctrl+l exec ~/dotfiles/i3/lock
 
 workspace 1 output eDP-1
 workspace 2 output eDP-1

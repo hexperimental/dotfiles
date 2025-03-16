@@ -115,7 +115,15 @@ Adding commands the 'git way' to test/try out and move to gitconfig.common when/
 
 ## Music config
 
-https://gist.github.com/lirenlin/f92c8e849530ebf66604
+## General updates
+
+```shell
+sudo EDITOR=vi visudo
+
+#User privilege specification
+username ALL=(ALL) NOPASSWD: /sbin/reboot, /sbin/shutdown
+```
+
 
 ## Random notes
 

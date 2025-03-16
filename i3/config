@@ -33,6 +33,16 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 
+# setting for music
+for_window [title="musikcube"] floating enable
+for_window [title="musikcube"] resize set 625 400
+for_window [title="musikcube"] move scratchpad 
+for_window [title="musikcube"] border pixel 2
+# start music
+bindsym $mod+m [title="musikcube"] scratchpad show; [title="musikcube-term"] move position center
+exec_always --no-startup-id sh -c "pgrep -x musikcube || i3-msg 'exec i3-sensible-terminal -title musikcube -e musikcube'"
+# keybinding for music
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # move tiling windows via drag & drop by left-clicking into the title bar,
@@ -59,8 +69,9 @@ bindsym $mod+Mod1+space exec rofi -modi "scripts:~/dotfiles/rofi/script-list.sh"
 ## CLIPBOARD MANAGER
 bindsym $mod+Ctrl+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
-## This should be fzf
-bindsym $mod+slash exec --no-startup-id dmenu_run
+## This should be fzfl
+for_window [class="floating-term"] floating enable
+bindsym $mod+slash exec i3-sensible-terminal -e ~/dotfiles/scripts/fzfmenu
 
 
 
@@ -81,8 +92,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-# resize window (you can also use the mouse for that)
+ # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -130,8 +140,15 @@ exec --no-startup-id xinput set-prop "VEN_06CB:00 06CB:CE7E Touchpad" "libinput 
 exec --no-startup-id xinput set-prop "pointer:Razer Razer Cobra" "libinput Natural Scrolling Enabled" --type=int --format=8 1
 #Black Pearl
 exec --no-startup-id xinput set-prop "SYNA88022:00 06CB:CE67 Touchpad" "libinput Natural Scrolling Enabled" --type=int --format=8 1
+exec --no-startup-id xinput set-prop "SYNA88022:00 06CB:CE67 Touchpad" "libinput Middle Emulation Enabled" --type=int --format=8 0
+exec --no-startup-id xinput set-prop "SYNA88022:00 06CB:CE67 Touchpad" "libinput Middle Emulation Enabled Default" --type=int --format=8 0
 
 
 ### KEY REMAP
 exec --no-startup-id setxkbmap -option ctrl:swap_lalt_lctl -option ctrl:swap_ralt_rctl
 
+### Mouse Fixing
+bindsym "button 2" nop
+bindsym button2 nop
+#bindsym "button 2" --release nop
+#bindsym button2 --border nop

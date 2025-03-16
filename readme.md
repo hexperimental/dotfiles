@@ -1,5 +1,24 @@
 # Dotfiles
 
+## Features
+
+- Screenshots (Win+Alt+4)
+- Clipboard Manager (Win+Ctrl+c)
+- Find Apps (Win+Space) 
+- Find Scripts (Win+Ctrl+Space) 
+- Find Open Windows (Win+Shift+Space) 
+- Fuzzy Finder (Win+Slash) 
+    -[] fine tune the fzfmenu script
+- Musikcube (Win+m)
+
+
+## Scripts
+- wallpaper-runner 
+- restart
+- turnoff
+
+
+
 First clone the repository. 
 
 For environment specific things create a bash_env and put it there. 
@@ -108,3 +127,5 @@ https://gist.github.com/lirenlin/f92c8e849530ebf66604
 - nvim
 - bumblebee-status https://github.com/tobi-wan-kenobi/bumblebee-status
 - green clip, wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
+- musikcube, wget https://github.com/clangen/musikcube/releases/download/3.0.4/musikcube_3.0.4_linux_x86_64.deb 
+

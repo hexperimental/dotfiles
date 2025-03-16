@@ -1,0 +1,8 @@
+#!/bin/bash
+#gnome-terminal --class 'floating-term' -e "fzf $* < /proc/$$/fd/0 > /proc/$$/fd/1"
+
+selected=$(compgen -c | sort -u | fzf --prompt="Run: " --height=40% --border)
+if [ -n "$selected" ]; then
+    i3-msg exec -- "$selected"
+fi
+  

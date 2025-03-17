@@ -17,6 +17,13 @@
 - restart
 - turnoff
 
+## Things to do
+
+-[] Automate this nonsnse. 
+To make the clipboard manager work run following: 
+```bash
+$/usr/bin/greenclip daemon >/dev/null 2>&1 &
+```
 
 
 First clone the repository. 

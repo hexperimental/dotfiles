@@ -7,7 +7,6 @@ include ~/dotfiles/i3/config_workspaces.conf
 
 set $mod Mod4
 
-
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -36,7 +35,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # MUSIC
 
 for_window [title="musikcube"] floating enable
-for_window [title="musikcube"] resize set 625 400
+for_window [title="musikcube"] resize set 725 500
 for_window [title="musikcube"] move scratchpad 
 for_window [title="musikcube"] border pixel 2
 # start music
@@ -133,9 +132,11 @@ exec --no-startup-id env TERM=xterm-256color
 ## sudo apt install volumeicon-alsa
 exec --no-startup-id volumeicon
 
-#Dell IO
-exec --no-startup-id xinput set-prop "VEN_06CB:00 06CB:CE7E Touchpad" "libinput Natural Scrolling Enabled" --type=int --format=8 1
-exec --no-startup-id xinput set-prop "pointer:Razer Razer Cobra" "libinput Natural Scrolling Enabled" --type=int --format=8 1
-
 ### KEY REMAP
 exec --no-startup-id setxkbmap -option ctrl:swap_lalt_lctl -option ctrl:swap_ralt_rctl
+
+## Greenclip daemon
+#exec --no-startup-id /usr/bin/greenclip daemon >/dev/null 2>&1 &
+#exec --no-startup-id /usr/bin/greenclip daemon & disown
+#exec --no-startup-id sh -c "sleep 2 && /usr/bin/greenclip daemon &"
+exec --no-startup-id sh -c "/usr/bin/greenclip daemon >/dev/null 2>&1 &"

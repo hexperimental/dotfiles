@@ -32,13 +32,22 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 
+# TODOs
+
+for_window [title="Todoist"] floating enable
+for_window [title="Todoist"] resize set 625 800
+for_window [title="Todoist"] move scratchpad 
+for_window [title="Todoist"] border pixel 2
+# start music
+bindsym $mod+t [title="Todoist"] scratchpad show; [title="Todoist"] move position center
+
 # MUSIC
 
 for_window [title="musikcube"] floating enable
 for_window [title="musikcube"] resize set 725 500
 for_window [title="musikcube"] move scratchpad 
 for_window [title="musikcube"] border pixel 2
-# start music
+
 bindsym $mod+m [title="musikcube"] scratchpad show; [title="musikcube-term"] move position center
 exec_always --no-startup-id sh -c "pgrep -x musikcube || i3-msg 'exec i3-sensible-terminal -title musikcube -e musikcube'"
 

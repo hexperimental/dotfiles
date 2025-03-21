@@ -37,13 +37,19 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 
 # TODOs
+for_window [title="iCloud Reminders"] floating enable
+for_window [title="iCloud Reminders"] resize set 625 800
+for_window [title="iCloud Reminders"] move scratchpad 
+for_window [title="iCloud Reminders"] border pixel 2
+# start music
+bindsym $mod+t [title="iCloud Reminders"] scratchpad show; [title="iCloud Reminders"] move position center
 
 for_window [title="Todoist"] floating enable
 for_window [title="Todoist"] resize set 625 800
 for_window [title="Todoist"] move scratchpad 
 for_window [title="Todoist"] border pixel 2
 # start music
-bindsym $mod+t [title="Todoist"] scratchpad show; [title="Todoist"] move position center
+#bindsym $mod+t [title="Todoist"] scratchpad show; [title="Todoist"] move position center
 
 # MUSIC
 
@@ -147,7 +153,4 @@ exec --no-startup-id volumeicon
 exec --no-startup-id setxkbmap -option ctrl:swap_lalt_lctl -option ctrl:swap_ralt_rctl
 
 ## Greenclip daemon
-#exec --no-startup-id /usr/bin/greenclip daemon >/dev/null 2>&1 &
-#exec --no-startup-id /usr/bin/greenclip daemon & disown
-#exec --no-startup-id sh -c "sleep 2 && /usr/bin/greenclip daemon &"
 exec --no-startup-id sh -c "/usr/bin/greenclip daemon >/dev/null 2>&1 &"

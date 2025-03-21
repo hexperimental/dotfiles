@@ -24,7 +24,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin()
 
-Plug '~/.vim/pack/myplugins/start/vim-hxdraft'
+Plug '~/.vim/myplugins/vim-hxdraft'
 """""""""""""""""""""""""""""""""""""""
 " Editor 
 "

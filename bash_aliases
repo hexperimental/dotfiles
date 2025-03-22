@@ -1,6 +1,7 @@
 # Overwriteable 
 alias notes='cd ~/Notes'
 alias dots='cd ~/dotfiles'
+alias code='cd ~/Code'
 
 # General
 alias :q='exit'

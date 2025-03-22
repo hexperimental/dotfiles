@@ -141,7 +141,7 @@ check_git_remote_changes() {
 }
 
 # Automatically check for remote changes in ~/dotfiles repo whenever a new shell starts
-check_git_remote_changes
+#check_git_remote_changes
 
 ###############################################################################
 # ChatGPT

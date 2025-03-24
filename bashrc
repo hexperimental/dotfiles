@@ -9,7 +9,7 @@ OPENAI_API_KEY=
 export TEXT_LANDER_PATH=
 export NOTES_DIR=
 
-export EDITOR=vim
+export EDITOR=nvim
 export HISTSIZE=1000
 export HISTFILESIZ=25000
 export HISTCONTROL=ignoredups 

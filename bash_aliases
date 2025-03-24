@@ -1,3 +1,4 @@
+#
 # Overwriteable 
 alias notes='cd ~/Notes'
 alias dots='cd ~/dotfiles'
@@ -11,7 +12,7 @@ alias quit='exit'
 alias ..='cd ..'
 alias ...='cd ../..'
 
-alias ls='ls -alrtF'
+alias lss='ls -alrtF'
 if command -v eza &> /dev/null; then
     alias ls='eza -l --sort=modified --reverse'
 fi
@@ -21,12 +22,17 @@ alias venv='source env/bin/activate'
 alias mkvenv='python3 -m venv env && source env/bin/activate'
 
 # Networking
-alias localip="hostname -I | awk '{print $1}'"
-alias myip='curl -s https://ifconfig.me && printf "\n"'
+alias iplocal="hostname -I | awk '{print $1}'"
+alias ippublic='curl -s https://ifconfig.me && printf "\n"'
 
-alias bashrc='vim ~/dotfiles/bashrc'
+ips() {
+  echo "Local IP: $(hostname -I | awk '{print $1}')"
+  echo "Public IP: $(curl -s https://ifconfig.me)"
+}
+
+alias vimrc='nvim ~/dotfiles/vimrc'
+alias bashrc='nvim ~/dotfiles/bashrc'
 alias reload='source ~/dotfiles/bashrc'
-alias vimrc='vim ~/dotfiles/vimrc'
 
 
 alias dirtychrome="open -a Google\ Chrome --args --disable-web-security"
@@ -46,7 +52,7 @@ alias pusher="git push origin dev"
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
-    alias ls='ls -lartF --color=auto'
+    #alias ls='ls -lartF --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'

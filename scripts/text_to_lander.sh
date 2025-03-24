@@ -2,11 +2,16 @@
 
 
 OS="$(uname -s)"
-TEXT_LANDER_PATH='Documents/Notes/Work/Lander.md'
+TEXT_LANDER_PATH='Notes/FieldNotes/Logbook.md'
 SAVE_PATH="${TEXT_SAVE_PATH:-$HOME/$TEXT_LANDER_PATH}"
 
 save_text_linux() {
-    text=$(zenity --text-info --editable --title="Save Text" --width=500 --height=400)
+
+    if [ "$#" -eq 0 ]; then
+        text=$(zenity --text-info --editable --title="Save Text" --width=500 --height=400)
+    else
+        text="$*"
+    fi
 
     if [ -n "$text" ]; then
         timestamp=$(date --iso-8601=seconds)

@@ -56,15 +56,25 @@ for_window [title="Todoist"] border pixel 2
 # start music
 #bindsym $mod+t [title="Todoist"] scratchpad show; [title="Todoist"] move position center
 
-# MUSIC
+# MUSIC MUSIKCUBE
 
-for_window [title="musikcube"] floating enable
-for_window [title="musikcube"] resize set 725 500
-for_window [title="musikcube"] move scratchpad 
-for_window [title="musikcube"] border pixel 2
+#for_window [title="musikcube"] floating enable
+#for_window [title="musikcube"] resize set 725 500
+#for_window [title="musikcube"] move scratchpad 
+#for_window [title="musikcube"] border pixel 2
 
-bindsym $mod+m [title="musikcube"] scratchpad show; [title="musikcube-term"] move position center
-exec_always --no-startup-id sh -c "pgrep -x musikcube || i3-msg 'exec i3-sensible-terminal -title musikcube -e musikcube'"
+#bindsym $mod+m [title="musikcube"] scratchpad show; [title="musikcube-term"] move position center
+#exec_always --no-startup-id sh -c "pgrep -x musikcube || i3-msg 'exec i3-sensible-terminal -title musikcube -e musikcube'"
+
+# MUSIC MOC
+
+#for_window [title="MOC"] floating enable
+#for_window [title="MOC"] resize set 725 500
+#for_window [title="MOC"] move scratchpad 
+#for_window [title="MOC"] border pixel 2
+
+#bindsym $mod+m [title="MOC"] scratchpad show; [title="MOC"] move position center
+#exec_always --no-startup-id sh -c "pgrep -x mocp || i3-msg 'exec i3-sensible-terminal -e mocp'"
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -74,7 +84,8 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec ghostty
 
 # kill focused window
 bindsym $mod+w kill
@@ -140,7 +151,6 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-
 # SCREENSHOT (Win+Alt+4)
 bindsym $mod+Mod1+4 exec flameshot gui
 
@@ -159,3 +169,8 @@ exec --no-startup-id setxkbmap -option ctrl:swap_lalt_lctl -option ctrl:swap_ral
 
 ## Greenclip daemon
 exec --no-startup-id sh -c "/usr/bin/greenclip daemon >/dev/null 2>&1 &"
+
+
+# Move over to _env
+#exec --no-startup-id xinput set-prop "VEN_06CB:00 06CB:CE7E Touchpad" "libinput Natural Scrolling Enabled" --type=int --format=8 1
+#exec --no-startup-id xinput set-prop "pointer:Razer Razer Cobra" "libinput Natural Scrolling Enabled" --type=int --format=8 1

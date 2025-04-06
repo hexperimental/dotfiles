@@ -137,6 +137,13 @@ vim.keymap.set("n", "K", "5k", { noremap = true })
 vim.keymap.set("n", "H", "5h", { noremap = true })
 vim.keymap.set("n", "L", "5l", { noremap = true })
 
+-- Set system clipboard
+vim.keymap.set("n", "y", '"+y')
+vim.keymap.set("n", "yy", '"+yy')
+vim.keymap.set("n", "Y", '"+Y')
+vim.keymap.set("x", "y", '"+y')
+vim.keymap.set("x", "Y", '"+Y')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

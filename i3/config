@@ -41,41 +41,20 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 
-# TODOs
-for_window [title="iCloud Reminders"] floating enable
-for_window [title="iCloud Reminders"] resize set 625 800
-for_window [title="iCloud Reminders"] move scratchpad 
-for_window [title="iCloud Reminders"] border pixel 2
-# start music
-bindsym $mod+t [title="iCloud Reminders"] scratchpad show; [title="iCloud Reminders"] move position center
+# MUSIC Spotify
 
-for_window [title="Todoist"] floating enable
-for_window [title="Todoist"] resize set 625 800
-for_window [title="Todoist"] move scratchpad 
-for_window [title="Todoist"] border pixel 2
-# start music
-#bindsym $mod+t [title="Todoist"] scratchpad show; [title="Todoist"] move position center
+for_window [class="spotify"] floating enable
+for_window [class="spotify"] resize set 725 500
+for_window [class="spotify"] move scratchpad 
+for_window [class="spotify"] border pixel 2
 
-# MUSIC MUSIKCUBE
+#bindsym $mod+m [class="spotify"] scratchpad show; [class="spotify"] move position center
 
-#for_window [title="musikcube"] floating enable
-#for_window [title="musikcube"] resize set 725 500
-#for_window [title="musikcube"] move scratchpad 
-#for_window [title="musikcube"] border pixel 2
+# Send Spotify to the scratchpad and center it
+for_window [class="Spotify"] move scratchpad, move position center
 
-#bindsym $mod+m [title="musikcube"] scratchpad show; [title="musikcube-term"] move position center
-#exec_always --no-startup-id sh -c "pgrep -x musikcube || i3-msg 'exec i3-sensible-terminal -title musikcube -e musikcube'"
-
-# MUSIC MOC
-
-#for_window [title="MOC"] floating enable
-#for_window [title="MOC"] resize set 725 500
-#for_window [title="MOC"] move scratchpad 
-#for_window [title="MOC"] border pixel 2
-
-#bindsym $mod+m [title="MOC"] scratchpad show; [title="MOC"] move position center
-#exec_always --no-startup-id sh -c "pgrep -x mocp || i3-msg 'exec i3-sensible-terminal -e mocp'"
-
+# Toggle it with $mod+m
+bindsym $mod+m [class="Spotify"] scratchpad show
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

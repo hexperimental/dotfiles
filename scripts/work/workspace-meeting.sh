@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # This script  sets up a 'meeting space' on i3 ready to work. browser for meeting on top and nvim for notes on the bottom. 
+
 # Switch to workspace 0
 i3-msg "workspace 0"
 # Open Firefox on Google Calendar (top half)
@@ -15,3 +16,12 @@ sleep 1  # Give it time to open
 i3-msg "focus down"
 # Final focus on nvim
 i3-msg "focus down"
+
+# This part is to setup the other displays like torches. 
+
+sleep 1  # Give it time to open
+
+# HERE add empty browser windows to external displays 11 and 7
+
+
+

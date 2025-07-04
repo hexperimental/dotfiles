@@ -89,18 +89,16 @@ export LSCOLORS=EafacadaBaeaeababacaca
 ###############################################################################
 
 meetingnote() {
-    TEMPLATE="$NOTES_DIR/Meetings/Template.md"
-    DEST_DIR="$NOTES_DIR/Meetings"
+    ##TEMPLATE="$NOTES_DIR/Meetings/Template.md"
+    ##DEST_DIR="$NOTES_DIR/Meetings"
+    #DEST_DIR=$NOTES_DIR/Archive/Daily\ Notes
+    ## Generate filename with timestamp format YYYY-MM-DD--HH:mm.md
+    #FILENAME="$(date '+%Y-%m-%d').md"
+    #DEST_FILE=$DEST_DIR/$FILENAME
 
-    # Generate filename with timestamp format YYYY-MM-DD--HH:mm.md
-    FILENAME="$(date '+%Y-%m-%d--%H:%M').md"
-    DEST_FILE="$DEST_DIR/$FILENAME"
-
-    # Copy the template to the new file
-    cp "$TEMPLATE" "$DEST_FILE"
-
-    # Open the new file in Neovim
-    nvim "$DEST_FILE"
+    local date=$(date +%F)
+    local file="$HOME/Documents/Notes/Work/Archive/Daily Notes/$date.md"
+    nvim "$file"
 }
 
 export -f meetingnote

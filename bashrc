@@ -3,6 +3,14 @@ clear
 # Check for interactive shell
 #[[ $- != *i* ]] && return
 
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null && eval "$(pyenv init -)"
+
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+
+export PATH="$HOME/.pyenv/bin:$PATH"
 #Overwrite this inside the _env
 show_host_in_ps1=yes
 OPENAI_API_KEY=

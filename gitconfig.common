@@ -2,7 +2,8 @@
 	editor = vim
 [alias]
 	gs = status
-	glog = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative	uncommit = reset --soft HEAD^
+	glog = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	uncommit = reset --soft HEAD^
 
 [pull]
 	rebase = true

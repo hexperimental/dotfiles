@@ -135,7 +135,7 @@ bindsym $mod+Mod1+4 exec flameshot gui
 
 
 #BACKGROUND
-exec --no-startup-id feh --bg-scale ~/dotfiles/images/wallpapers/surfbackground.jpg
+exec --no-startup-id feh --bg-scale ~/dotfiles/images/wallpapers/HEX12140.jpg
 
 exec --no-startup-id env TERM=xterm-256color
 

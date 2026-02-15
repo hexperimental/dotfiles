@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Configuration
+# parameters to not run them again. 
 PATCH_DIR="$HOME/Projects/tradablebits/sql"
 PATCH_PATTERN="patch*.sql"
 TRACK_FILE="$HOME/junk/applied_patches_log.txt"

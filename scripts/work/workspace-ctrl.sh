@@ -3,7 +3,6 @@
 # Command and Control
 i3-msg "workspace 1"
 # Open the first terminal (top-left)
-i3-msg "exec gnome-terminal"
 sleep 0.5
 # Split horizontally and open Obsidian (top-right)
 i3-msg "split h"

@@ -171,3 +171,5 @@ gpt() {
     fi
 }
 
+
+eval "$(/opt/homebrew/bin/brew shellenv)"

@@ -85,7 +85,7 @@ macbox() {
         return 1
     fi
     if [ -n "$1" ]; then
-        TERM=xterm-256color ssh $MACBOX_CONN -t "tmux attach -t $1"
+        TERM=xterm-256color ssh $MACBOX_CONN -t "/opt/homebrew/bin/tmux attach -t $1"
     else
         TERM=xterm-256color ssh $MACBOX_CONN
     fi

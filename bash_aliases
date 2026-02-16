@@ -78,6 +78,15 @@ if ! $IS_MAC; then
     alias open='xdg-open'
 fi
 
+# SSH
+macbox() {
+    if [ -n "$1" ]; then
+        ssh macbox -t "tmux attach -t $1"
+    else
+        ssh macbox
+    fi
+}
+
 # Support cls
 alias cls='clear'
 

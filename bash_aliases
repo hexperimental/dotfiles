@@ -28,6 +28,9 @@ fi
 alias venv='source env/bin/activate'
 alias mkvenv='python3 -m venv env && source env/bin/activate'
 
+# SSH
+alias macbox='TERM=xterm-256color ssh hexperimental@192.168.3.182'
+
 # Networking
 if $IS_MAC; then
     alias iplocal="ipconfig getifaddr en0"

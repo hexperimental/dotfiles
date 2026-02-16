@@ -80,10 +80,14 @@ fi
 
 # SSH
 macbox() {
+    if [ -z "$MACBOX_CONN" ]; then
+        echo "MACBOX_CONN is not set. Set it in bash_env."
+        return 1
+    fi
     if [ -n "$1" ]; then
-        TERM=xterm-256color ssh macbox -t "tmux attach -t $1"
+        TERM=xterm-256color ssh $MACBOX_CONN -t "tmux attach -t $1"
     else
-        TERM=xterm-256color ssh macbox
+        TERM=xterm-256color ssh $MACBOX_CONN
     fi
 }
 

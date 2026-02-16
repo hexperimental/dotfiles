@@ -25,6 +25,7 @@ show_host_in_ps1=yes
 export OPENAI_API_KEY=
 export TEXT_LANDER_PATH=
 export NOTES_DIR=
+export MACBOX_CONN=
 
 export EDITOR=nvim
 export HISTSIZE=1000

@@ -1,209 +1,150 @@
 # Dotfiles
 
-## Features
+Personal dotfiles for a keyboard-driven Linux (i3wm) and macOS setup.
 
-- Screenshots (Win+Alt+4)
-- Clipboard Manager (Win+Ctrl+c)
-- Find Apps (Win+Space) 
-- Find Scripts (Win+Ctrl+Space) 
-- Find Open Windows (Win+Shift+Space) 
-- Fuzzy Finder (Win+Slash) 
-    -[] fine tune the fzfmenu script
-- Musikcube/DeadBeef (Win+m)
-- 
+## Keyboard Shortcuts (i3)
 
-
-## Scripts
-- wallpaper-runner 
-- restart
-- turnoff
-
-
-## Things to do
-
--[] Automate this nonsnse. 
-To make the clipboard manager work run following: 
-```bash
-$/usr/bin/greenclip daemon >/dev/null 2>&1 &
-```
+| Shortcut | Action |
+|---|---|
+| Win+Return | Terminal (Ghostty) |
+| Win+Space | App launcher (Rofi) |
+| Win+Shift+Space | Window switcher |
+| Win+Alt+Space | Script launcher |
+| Win+Ctrl+c | Clipboard manager (GreenClip) |
+| Win+Slash | Fuzzy finder |
+| Win+m | Spotify (scratchpad toggle) |
+| Win+Alt+4 | Screenshot (Flameshot) |
+| Win+Ctrl+l | Lock screen |
+| Win+f | Fullscreen toggle |
+| Win+r | Resize mode |
+| Win+w | Close window |
 
 ## Setup
 
-This whole thing is mainly for productivity and centered around keyboard control. Once the OS and i3 are installed: 
+### Clone
 
-Install Git
-```
-sudo apt install git
-
-or
-
-sudo pacman -S git
-```
-
-Once git is good: 
-
-```
+```bash
 cd ~/
 git clone http://github.com/hexperimental/dotfiles
 ```
 
-This will create a dotfiles directory. 
+### Dependencies
 
-Now lets get some deps going first to minimize the errors
+**Arch Linux:**
+```bash
+sudo pacman -S git rofi feh flameshot xorg-xrandr brightnessctl
+```
 
+**Additional tools:**
+- [Bumblebee-status](https://github.com/tobi-wan-kenobi/bumblebee-status) (i3 bar)
+- [GreenClip](https://github.com/erebe/greenclip/releases) (clipboard manager)
+- [Ghostty](https://ghostty.org) (terminal emulator)
+- [eza](https://github.com/eza-community/eza) (ls replacement, optional)
 
-#### Quick install Deps
-- Bumblebee-status https://github.com/tobi-wan-kenobi/bumblebee-status
-- xorg-xrandr
-- feh
-- rofi
-- flameshot
-- GreenClip (wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip)
-
-Once all that stuff is ready to go can plug things in. 
+### Symlinks
 
 ```bash
-ln -s ~/dotfiles/vimrc ~/.vimrc
+# Shell
 ln -s ~/dotfiles/bashrc ~/.bashrc
-cp ~/dotfilew/gitconfig ~/.gitconfig
-ln -s ~/dotfiles/i3/config ~/.config/i3/conf
+ln -s ~/dotfiles/bash_aliases ~/dotfiles/bash_aliases  # already sourced by bashrc
+
+# Git (copy, not symlink — edit name/email per machine)
+cp ~/dotfiles/gitconfig ~/.gitconfig
+
+# i3
+mkdir -p ~/.config/i3
+ln -s ~/dotfiles/i3/config ~/.config/i3/config
+
+# Rofi
+mkdir -p ~/.config/rofi
+ln -s ~/dotfiles/rofi/config.rasi ~/.config/rofi/config.rasi
+
+# Neovim
+mkdir -p ~/.config/nvim
+ln -s ~/dotfiles/init.lua ~/.config/nvim/init.lua
+
+# Ghostty
+mkdir -p ~/.config/ghostty
+ln -s ~/dotfiles/ghostty/config ~/.config/ghostty/config
+
+# Vim (legacy)
+ln -s ~/dotfiles/vimrc ~/.vimrc
 ```
 
-Before wiring the bash settings check if there's something there already. 
+### Environment-specific config
 
-For environment specific things create a bash_env and put it there. 
+Machine-specific settings go in files that are gitignored:
+
 ```bash
-cd ~/dotfiles
-touch bash_env
+touch ~/dotfiles/bash_env          # shell env vars, PATH overrides, etc.
+touch ~/dotfiles/i3/config_env.conf  # i3 machine-specific (display outputs, input devices)
 ```
-This is to keep enviromnent specific things on each environment withouth bloating the file needlessly
 
-If there's already a .bashrc or .bash_profile can be moved over
+If there's an existing `.bashrc` or `.bash_profile`, move it to `bash_env` so those settings are preserved:
 ```bash
 mv ~/.bashrc ~/dotfiles/bash_env
-or
-mv ~/.bash_profile ~/dotfiles/bash_env
-```
-that way whatever is in there will continue to be there.
-
-Finally
-
-```bash
-ln -s ~/dotfiles/bashrc ~/.bashrc
 ```
 
+### Cross-platform notes
 
-Once that thing is plugged in i'd say restart to fully get the goodies, but can keep going. 
-
-
-There are some of the goodies out of the box
-
-To edit bashrc
-```bash
-bashrc 
-```
-
-To edit vimrc
-```bash
-vimrc
-```
-
-To source the bash/ after updates
-```bash
-reload
-```
-
-
+The shell config detects macOS vs Linux automatically. Platform-specific differences:
+- `open` alias: only set to `xdg-open` on Linux (macOS keeps native `open`)
+- Local IP detection: uses `ipconfig getifaddr en0` on Mac, `hostname -I` on Linux
+- pyenv: works with both git-clone installs (`~/.pyenv/bin`) and Homebrew installs
+- i3/rofi/greenclip configs are Linux-only
 
 ## Vim
 
-Install vim plug. 
+Install [vim-plug](https://github.com/junegunn/vim-plug):
 ```bash
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
-then
+
+Then open vim and run `:PlugInstall`.
+
+## Neovim
+
+Install prerequisites:
 ```bash
-vimrc
-```
-then run 
-```
-:PlugInstall
-```
+# Arch
+sudo pacman -S make gcc ripgrep unzip git xclip curl neovim
 
-
-## nvim
-```bash
-sudo apt update
-sudo apt install make gcc ripgrep unzip git xclip curl
-or 
-sudo pacman -S 
-
-
-# Now we install nvim
+# Or install manually
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-sudo rm -rf /opt/nvim-linux-x86_64
-sudo mkdir -p /opt/nvim-linux-x86_64
-sudo chmod a+rX /opt/nvim-linux-x86_64
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
-
-# make it available in /usr/local/bin, distro installs to /usr/bin
 sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/
-
 ```
 
-Then to make it easy: 
-```
-git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
-``` 
+The `init.lua` is based on [Kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim). Open nvim after symlinking and plugins will install automatically via lazy.nvim.
 
-Open nvim and kickstart will take over. After its done: 
-```
-ln -s ~/dotfiles/init.lua ~/.config/nvim/init.lua
-```
+## Git
 
-## Rofi
+The `.gitconfig` is **copied** (not symlinked) so each machine can have its own `user.name` and `user.email`. Shared aliases and settings live in `gitconfig.common` which is included automatically.
 
 ```bash
-sudo apt instal rofi
-mkdir ~/.confif/rofi
-ln -s ~/dotfiles/rofi/config.rasi ~/.config/rofi/config.rasi
+vim ~/.gitconfig  # add name and email
 ```
 
-## Git Stuff
-For commits and pushing stuff to git, the .gitconfig needs to be edited. This is not a symbolic link so 
-```
-vim ~/.gitconfig
-```
-Add name and email. 
+## Shell aliases
 
-To create Key
-To update key in github
+| Alias | Action |
+|---|---|
+| `bashrc` | Edit bashrc in nvim |
+| `vimrc` | Edit vimrc in nvim |
+| `reload` | Re-source bashrc |
+| `dots` | cd to ~/dotfiles |
+| `notes` | cd to ~/Notes |
+| `code` | cd to ~/Code |
+| `ips` | Show local and public IP |
+| `venv` / `mkvenv` | Activate / create Python venv |
 
+## Recommended utilities
 
-### Utilities
-- Yay
+- yay (AUR helper)
 - fastfetch
 - 1password
 - syncthing
 - imagemagick
-- obsidian
-- Ghostty / Homebrew theme
-- Musikcube / Moc / DeadBeef
-
-
-
-## General updates
-
-This in case the OS install didn't made the user 'sudoer'
-```shell
-sudo EDITOR=vi visudo
-
-#User privilege specification
-username ALL=(ALL) NOPASSWD: /sbin/reboot, /sbin/shutdown
-```
-
-
-
-## Random notes
-
+- Obsidian
+- Musikcube / DeadBeef

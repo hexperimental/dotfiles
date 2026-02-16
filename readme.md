@@ -162,6 +162,14 @@ Starts a tmux session called `dots` with a 3-pane layout at `~/dotfiles` (two st
 ~/dotfiles/scripts/tmux-dots.sh
 ```
 
+### tmux-hxhomelab.sh
+
+Starts a tmux session called `hxhomelab` with a 3-pane layout at `~/HxHomeLab` (two stacked panes on the left, one on the right). If the session already exists it just skips.
+
+```bash
+~/dotfiles/scripts/tmux-hxhomelab.sh
+```
+
 ## Recommended utilities
 
 - yay (AUR helper)

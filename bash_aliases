@@ -28,9 +28,6 @@ fi
 alias venv='source env/bin/activate'
 alias mkvenv='python3 -m venv env && source env/bin/activate'
 
-# SSH
-alias macbox='TERM=xterm-256color ssh hexperimental@192.168.3.182'
-
 # Networking
 if $IS_MAC; then
     alias iplocal="ipconfig getifaddr en0"
@@ -84,9 +81,9 @@ fi
 # SSH
 macbox() {
     if [ -n "$1" ]; then
-        ssh macbox -t "tmux attach -t $1"
+        TERM=xterm-256color ssh macbox -t "tmux attach -t $1"
     else
-        ssh macbox
+        TERM=xterm-256color ssh macbox
     fi
 }
 

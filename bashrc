@@ -1,26 +1,25 @@
-clear 
-
 # Check for interactive shell
 #[[ $- != *i* ]] && return
 
-source ~/.git-prompt.sh
+[ -f ~/.git-prompt.sh ] && source ~/.git-prompt.sh
 
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null && eval "$(pyenv init -)"
+[ -d "$PYENV_ROOT/bin" ] && export PATH="$PYENV_ROOT/bin:$PATH"
 
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
-
-export PATH="$HOME/.pyenv/bin:$PATH"
+if command -v pyenv >/dev/null; then
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 #Overwrite this inside the _env
 show_host_in_ps1=yes
-OPENAI_API_KEY=
+export OPENAI_API_KEY=
 export TEXT_LANDER_PATH=
 export NOTES_DIR=
 
 export EDITOR=nvim
 export HISTSIZE=1000
-export HISTFILESIZ=25000
+export HISTFILESIZE=25000
 export HISTCONTROL=ignoredups 
 
 LS_COLORS='di=0;35:fi=0;37'
@@ -31,9 +30,6 @@ shopt -s histappend
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
-# Set the terminal background and text color
-export TERM=xterm-256color
 
 # Load the aliases if the file exists
 if [ -f "$HOME/dotfiles/bash_aliases" ]; then
@@ -74,11 +70,10 @@ function tabname {
   printf "\e]1;$1\a"
 }
 
-# Enable case-insensitive tab completion, but avoid errors in i3
-if [[ "$-" == *i* ]] && [[ "$DESKTOP_SESSION" != "i3" ]] && [[ -n "$TERM" ]]; then
+# Enable case-insensitive tab completion
+if [[ "$-" == *i* ]]; then
     bind "set completion-ignore-case on"
 fi
-#bind "set completion-ignore-case on"
 
 #setting up colors on the terminal
 export CLICOLOR=1
@@ -126,23 +121,23 @@ fi
 
 # Function to check for remote branch changes in ~/dotfiles
 check_git_remote_changes() {
-  # Navigate to the ~/dotfiles directory
-  cd ~/dotfiles || { echo "Failed to navigate to ~/dotfiles"; return 1; }
+  local repo=~/dotfiles
 
-  # Make sure we're in a git repository
-  if [ ! -d ".git" ]; then
+  if [ ! -d "$repo/.git" ]; then
     echo "Not a git repository!"
     return 1
   fi
 
   # Fetch the latest updates from the remote
-  git fetch --quiet
+  git -C "$repo" fetch --quiet
 
   # Get the current branch
-  current_branch=$(git rev-parse --abbrev-ref HEAD)
+  local current_branch
+  current_branch=$(git -C "$repo" rev-parse --abbrev-ref HEAD)
 
   # Check if the local branch is behind the remote
-  behind_count=$(git rev-list --count ${current_branch}..origin/${current_branch})
+  local behind_count
+  behind_count=$(git -C "$repo" rev-list --count "${current_branch}..origin/${current_branch}")
 
   if [ "$behind_count" -gt 0 ]; then
     echo "Warning: Your local branch is behind the remote by $behind_count commit(s). Run 'git pull' to update."
@@ -165,11 +160,11 @@ gpt() {
             -H "Authorization: Bearer $OPENAI_API_KEY" \
             -H "Content-Type: application/json" \
             -d "{
-                \"model\": \"gpt-4\",  # Or \"gpt-4\" if available
-                \"messages\": [{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}, 
+                \"model\": \"gpt-4\",
+                \"messages\": [{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},
                               {\"role\": \"user\", \"content\": \"$query\"}]
             }")
-        reply=$(echo $response | jq -r '.choices[0].message.content')
+        reply=$(echo "$response" | jq -r '.choices[0].message.content')
         echo "Response: $reply"
     else
         echo "API key is not set. Please set the API_KEY variable."

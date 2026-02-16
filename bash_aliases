@@ -1,8 +1,15 @@
 #
-# Overwriteable 
+# Overwriteable
 alias notes='cd ~/Notes'
 alias dots='cd ~/dotfiles'
 alias code='cd ~/Code'
+
+# Platform detection
+if [[ "$(uname)" == "Darwin" ]]; then
+    IS_MAC=true
+else
+    IS_MAC=false
+fi
 
 # General
 alias :q='exit'
@@ -22,20 +29,28 @@ alias venv='source env/bin/activate'
 alias mkvenv='python3 -m venv env && source env/bin/activate'
 
 # Networking
-alias iplocal="hostname -I | awk '{print $1}'"
+if $IS_MAC; then
+    alias iplocal="ipconfig getifaddr en0"
+    ips() {
+      echo "Local IP: $(ipconfig getifaddr en0)"
+      echo "Public IP: $(curl -s https://ifconfig.me)"
+    }
+else
+    alias iplocal="hostname -I | awk '{print \$1}'"
+    ips() {
+      echo "Local IP: $(hostname -I | awk '{print $1}')"
+      echo "Public IP: $(curl -s https://ifconfig.me)"
+    }
+fi
 alias ippublic='curl -s https://ifconfig.me && printf "\n"'
-
-ips() {
-  echo "Local IP: $(hostname -I | awk '{print $1}')"
-  echo "Public IP: $(curl -s https://ifconfig.me)"
-}
 
 alias vimrc='nvim ~/dotfiles/vimrc'
 alias bashrc='nvim ~/dotfiles/bashrc'
 alias reload='source ~/dotfiles/bashrc'
 
-
-alias dirtychrome="open -a Google\ Chrome --args --disable-web-security"
+if $IS_MAC; then
+    alias dirtychrome="open -a Google\ Chrome --args --disable-web-security"
+fi
 
 # Docker
 alias dockerps='docker ps -a'
@@ -48,18 +63,20 @@ function dockernuke() {
 alias updater="git pull origin dev"
 alias pusher="git push origin dev"
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+# Colored grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
-    #alias ls='ls -lartF --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+# enable color support of ls on Linux via dircolors
+if ! $IS_MAC && [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-# Open with default application
-alias open='xdg-open'
+# Open with default application (macOS has native open)
+if ! $IS_MAC; then
+    alias open='xdg-open'
+fi
 
 # Support cls
 alias cls='clear'

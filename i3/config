@@ -43,12 +43,11 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # MUSIC Spotify
 
-for_window [class="spotify"] floating enable
-for_window [class="spotify"] resize set 725 500
-for_window [class="spotify"] move scratchpad 
-for_window [class="spotify"] border pixel 2
-
-for_window [class="Spotify"] move scratchpad, move position center
+for_window [class="Spotify"] floating enable
+for_window [class="Spotify"] resize set 725 500
+for_window [class="Spotify"] move scratchpad
+for_window [class="Spotify"] border pixel 2
+for_window [class="Spotify"] move position center
 bindsym $mod+m [class="Spotify"] scratchpad show
 exec_always --no-startup-id sh -c "pgrep -x spotify || i3-msg 'exec spotify'"
 

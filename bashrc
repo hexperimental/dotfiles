@@ -1,7 +1,16 @@
 # Check for interactive shell
 #[[ $- != *i* ]] && return
 
-[ -f ~/.git-prompt.sh ] && source ~/.git-prompt.sh
+# Git prompt (__git_ps1) — check common locations
+if [ -f ~/.git-prompt.sh ]; then
+    source ~/.git-prompt.sh
+elif [ -f /usr/lib/git-core/git-sh-prompt ]; then
+    source /usr/lib/git-core/git-sh-prompt
+elif [ -f "$(brew --prefix 2>/dev/null)/etc/bash_completion.d/git-prompt.sh" ]; then
+    source "$(brew --prefix)/etc/bash_completion.d/git-prompt.sh"
+fi
+# Fallback so PS1 doesn't error if none of the above exist
+command -v __git_ps1 &>/dev/null || __git_ps1() { :; }
 
 export PYENV_ROOT="$HOME/.pyenv"
 [ -d "$PYENV_ROOT/bin" ] && export PATH="$PYENV_ROOT/bin:$PATH"

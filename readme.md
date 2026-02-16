@@ -67,6 +67,9 @@ ln -s ~/dotfiles/init.lua ~/.config/nvim/init.lua
 mkdir -p ~/.config/ghostty
 ln -s ~/dotfiles/ghostty/config ~/.config/ghostty/config
 
+# tmux
+ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+
 # Vim (legacy)
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ```
@@ -92,6 +95,10 @@ The shell config detects macOS vs Linux automatically. Platform-specific differe
 - Local IP detection: uses `ipconfig getifaddr en0` on Mac, `hostname -I` on Linux
 - pyenv: works with both git-clone installs (`~/.pyenv/bin`) and Homebrew installs
 - i3/rofi/greenclip configs are Linux-only
+- Git prompt (`__git_ps1`): on macOS with system git, download it manually:
+  ```bash
+  curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+  ```
 
 ## Vim
 
@@ -138,6 +145,22 @@ vim ~/.gitconfig  # add name and email
 | `code` | cd to ~/Code |
 | `ips` | Show local and public IP |
 | `venv` / `mkvenv` | Activate / create Python venv |
+
+## Scripts
+
+Helper scripts live in `scripts/`. Make them executable once after cloning:
+
+```bash
+chmod +x ~/dotfiles/scripts/*.sh
+```
+
+### tmux-dots.sh
+
+Starts a tmux session called `dots` with a 3-pane layout at `~/dotfiles` (two stacked panes on the left, one on the right). If the session already exists it just skips.
+
+```bash
+~/dotfiles/scripts/tmux-dots.sh
+```
 
 ## Recommended utilities
 

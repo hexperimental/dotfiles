@@ -15,7 +15,7 @@ fi
 
 tmux new-session -d -s "$SESSION" -c "$DIR"
 tmux set-option -t "$SESSION" status-position top
-tmux set-option -t "$SESSION" status-style "bg=orange,fg=black"
+tmux set-option -t "$SESSION" status-style "bg=purple,fg=white"
 tmux split-window -h -t "$SESSION" -c "$DIR"
 tmux split-window -v -t "$SESSION:1.1" -c "$DIR"
 tmux select-pane -t "$SESSION:1.3"

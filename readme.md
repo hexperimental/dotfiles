@@ -170,6 +170,22 @@ Starts a tmux session called `hxhomelab` with a 3-pane layout at `~/HxHomeLab` (
 ~/dotfiles/scripts/tmux-hxhomelab.sh
 ```
 
+### tmux-constellation.sh
+
+Starts a tmux session called `constellation` with a 3-pane layout at `~/Code/constellation` (two stacked panes on the left, one on the right). If the session already exists it just skips.
+
+```bash
+~/dotfiles/scripts/tmux-constellation.sh
+```
+
+### tmux-snn.sh
+
+Starts a tmux session called `snn` with a 3-pane layout at `~/Code/snn` (two stacked panes on the left, one on the right). If the session already exists it just skips.
+
+```bash
+~/dotfiles/scripts/tmux-snn.sh
+```
+
 ## Recommended utilities
 
 - yay (AUR helper)

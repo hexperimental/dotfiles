@@ -88,7 +88,7 @@ fi
 #setting up colors on the terminal
 export CLICOLOR=1
 # LS Color Scheme off this tool:  http://geoff.greer.fm/lscolors/
-export LSCOLORS=EafacadaBaeaeababacaca
+export LSCOLORS=GxGxcxdxBxegedabagacad
 
 ###############################################################################
 # Functions
